@@ -1,9 +1,25 @@
-function App() {
+import React from "react";
+import {useState} from "react";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import OrgLogin from "./pages/OrgLogin";
+import ProtectedRoute from "./components/ProtectedRoute";
+import OrgOverview from "./pages/OrgOverview";
+
+const App: React.FC = () => {
+  const [isAuth, setIsAuth] = useState(false);
+
   return (
-    <div className="App">
-      <h1>Dunder dome! </h1>
-    </div>
+    <Router>
+      <Routes>
+
+        <Route path="/org-login" element={<OrgLogin setIsAuth={setIsAuth}/>} />
+
+        <ProtectedRoute isAuth={isAuth} path="/org-overview" element={<OrgOverview/>} />
+
+      </Routes>
+    </Router>
+
   );
-}
+};
 
 export default App;
