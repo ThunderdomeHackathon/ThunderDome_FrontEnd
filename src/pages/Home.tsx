@@ -8,11 +8,10 @@ function Home() {
             <div className="home" style={{ backgroundImage: `url(${"image.jpg"})` }}>
                 <div className="headerContainer">
                     <div className='subheaderContainer'>
-                    <h1>Valley Farm Secrets</h1>
-                    <p>Fresh and Natural Fruit and Veg!</p>
+                    <h1>ThunderDome FrontEnd</h1>
                     </div>
-                    <Link to="/products">
-                    <button> View Our Products</button>
+                    <Link to="/org-login">
+                    <button>Organization Login</button>
                     </Link>
                 </div>
 
