@@ -12,16 +12,17 @@ const App: React.FC = () => {
   const [isAuth, setIsAuth] = useState(false);
 
   return (
-    <Router>
+    <div className="App">
+      <Router>
       <Navbar />
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/org-login" element={<OrgLogin setIsAuth={setIsAuth}/>} />
-          <ProtectedRoute isAuth={isAuth} path="/org-overview" element={<OrgOverview/>} />
+          {/*<ProtectedRoute isAuth={isAuth} path="/org-overview" element={<OrgOverview/>} />*/}
         </Routes>
       <Footer />
     </Router>
-
+    </div>
   );
 };
 
