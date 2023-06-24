@@ -1,19 +1,18 @@
-import React from 'react'
-import {useNavigate, Route, RouteProps} from 'react-router-dom'
+import { Outlet, useNavigate } from "react-router-dom";
 
-export type Props = RouteProps & {
-    isAuth: boolean;
-}
+export type Props = {
+  isAuth: boolean;
+};
 
-const ProtectedRoute = ({ isAuth, ...routeProps}: Props) => {
-    const Redirect = useNavigate();
-    if (isAuth) {
-        return <Route {...routeProps}/>
-    }
-    
-  return (
-    (null)
-  );
-}
+const ProtectedRoute = ({ isAuth }: Props) => {
+  const navigate = useNavigate();
+  if (!isAuth) {
+    navigate("/org-login");
+  }
+
+  
+
+  return <Outlet />;
+};
 
 export default ProtectedRoute;

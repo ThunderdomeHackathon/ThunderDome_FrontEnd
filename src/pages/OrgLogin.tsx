@@ -1,22 +1,31 @@
-import React from 'react'
-import {useNavigate} from "react-router-dom";
+import Loading from "@components/Loading";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
-    setIsAuth: React.Dispatch<React.SetStateAction<boolean>>;
+  handleAuth: (isAuth: boolean) => Promise<void>;
 }
 
-const OrgLogin: React.FC<Props> = ( {setIsAuth}) => {
+const OrgLogin = ({ handleAuth }: Props) => {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
-    {/*Import setIsAuth history using hook*/}
-    const history = useNavigate()
-    
-    {/*Define function to handle login*/}
-    const handleLogin = () => {
-        setIsAuth(true)
-        history("/org-overview");
-    }
+  const handleLogin = async () => {
+    setLoading(true);
+    await handleAuth(true);
+    setLoading(false);
+    navigate("/org-overview");
+  };
 
-  return <button onClick={ () => handleLogin()}>Login</button>;
+  return (
+    <div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <button onClick={() => handleLogin()}>Login</button>
+      )}
+    </div>
+  );
 };
 
-export default OrgLogin
+export default OrgLogin;
