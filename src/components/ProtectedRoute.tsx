@@ -1,16 +1,19 @@
 import { Outlet, useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@firebaseStuff/index";
+import Loading from "./Loading";
 
-export type Props = {
-  isAuth: boolean;
-};
-
-const ProtectedRoute = ({ isAuth }: Props) => {
+const ProtectedRoute = () => {
   const navigate = useNavigate();
-  if (!isAuth) {
-    navigate("/org-login");
+  const [user, loading, error] = useAuthState(auth);
+
+  if (loading) {
+    return <Loading />;
   }
 
-  
+  if (!user) {
+    navigate("/org-login");
+  }
 
   return <Outlet />;
 };

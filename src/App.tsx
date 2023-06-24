@@ -9,13 +9,6 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 const App: React.FC = () => {
-  const [isAuth, setIsAuth] = useState(false);
-
-  const handleAuth1 = async (isAuth: boolean) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsAuth(isAuth);
-  };
-
   return (
     <div className="App">
       <Router>
@@ -24,9 +17,9 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route
             path="/org-login"
-            element={<OrgLogin handleAuth={handleAuth1} />}
+            element={<OrgLogin  />}
           />
-          <Route element={<ProtectedRoute isAuth={isAuth} />}>
+          <Route element={<ProtectedRoute  />}>
             <Route path="/org-overview" element={<OrgOverview />} />
           </Route>
         </Routes>
