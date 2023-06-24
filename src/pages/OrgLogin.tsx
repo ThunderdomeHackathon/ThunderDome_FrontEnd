@@ -29,34 +29,50 @@ const OrgLogin = () => {
   }
 
   return (
-    <div>
-      {loading ? (
-        <Loading />
-      ) : (
-        <form className="login-form">
-          <label>Email</label>
-          <input
-            value={email}
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <label>Password</label>
-          <input
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-          />
-          {error && <p>Invalid email or password</p>}
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              handleLogin();
-            }}
-          >
-            Sign in
-          </button>
-        </form>
-      )}
+    <div className='contact'>
+
+        <div 
+        className='leftSide'
+        style={{ backgroundImage: `url(${"image.jpg"})` }}>
+            </div> 
+
+        <div className='rightSide'>
+
+          <div>
+            {loading ? (
+              <Loading />
+            ) : (
+              <div>
+                <h1>Organisation Login</h1>
+                <form className="contact-form">
+                  <label>Email</label>
+                  <input
+                    value={email}
+                    type="email"
+                    placeholder='Enter email...'
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <label>Password</label>
+                  <input
+                    value={password}
+                    placeholder='Enter password...'
+                    onChange={(e) => setPassword(e.target.value)}
+                    type="password"
+                  />
+                  {error && <p>Invalid email or password</p>}
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleLogin();
+                    }}
+                  >
+                    Sign in
+                  </button>
+                </form>
+              </div>
+            )}
+          </div>
+        </div>
     </div>
   );
 };
