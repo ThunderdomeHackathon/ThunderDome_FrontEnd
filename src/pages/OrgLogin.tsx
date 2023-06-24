@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@firebaseStuff/index";
-import "./OrgLogin.css";
+import "../styles/OrgLogin.css";
 
 const OrgLogin = () => {
   const navigate = useNavigate();
