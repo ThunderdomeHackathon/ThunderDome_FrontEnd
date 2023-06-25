@@ -1,42 +1,39 @@
 import Loading from "@components/Loading";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate, Link} from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@firebaseStuff/index";
 import "../styles/OrgLogin.css";
 
-const OrgSignup = () => {
+const VoterLogin = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
-  const handleSignUp = async () => {
+  const handleLogin = async () => {
     setLoading(true);
     setError(false);
-
-    await createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-        // Account creation successful.
-        const user = userCredential.user;
-        })
-        .catch((error) => {
-        // An error happened.
-        setError(true);
-        console.error(error);
-        });
-
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      setError(true);
+    }
     setLoading(false);
-    navigate("/org-overview");
-        };
+    navigate("/voter-overview");
+  };
+  if (auth.currentUser) {
+    // if the user is already logged in, redirect them to the overview.
+    navigate("/voter-overview");
+  }
 
   return (
     <div className='contact'>
 
         <div 
         className='leftSide'
-        style={{ backgroundImage: `url(${"image2.jpg"})` }}>
+        style={{ backgroundImage: `url(${"image3.jpg"})` }}>
             </div> 
 
         <div className='rightSide'>
@@ -46,7 +43,7 @@ const OrgSignup = () => {
               <Loading />
             ) : (
               <div>
-                <h1>Organisation Signup</h1>
+                <h1>Voter Login</h1>
                 <form className="contact-form">
                   <label>Email</label>
                   <input
@@ -62,15 +59,21 @@ const OrgSignup = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     type="password"
                   />
+                  {error && <p>Invalid email or password</p>}
                   <button
                     onClick={(e) => {
                       e.preventDefault();
-                      handleSignUp();
+                      handleLogin();
                     }}
                   >
-                    Sign up
+                    Sign in
                   </button>
+
+                  <Link to="/voter-signup">
+                    <button>Create Account</button>
+                    </Link>
                 </form>
+                {/*Redirect to VoterSignup  */}
               </div>
             )}
           </div>
@@ -79,4 +82,4 @@ const OrgSignup = () => {
   );
 };
 
-export default OrgSignup;
+export default VoterLogin;

@@ -8,6 +8,10 @@ import Home from "./pages/Home";
 import OrgSignup from "@pages/OrgSignup";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import VoterLogin from "@pages/VoterLogin";
+import VoterOverview from "@pages/VoterOverview";
+import VoterSignup from "@pages/VoterSignup";
+import ProtectedRoute2 from "@components/ProtectedRoute2";
 
 const App: React.FC = () => {
   return (
@@ -28,6 +32,14 @@ const App: React.FC = () => {
           </Route>
 
           {/*Voter Login and Signup*/}
+          <Route path="/voter-signup" element={<VoterSignup />}/>
+          <Route
+            path="/voter-login"
+            element={<VoterLogin  />}
+          />
+          <Route element={<ProtectedRoute2  />}>
+            <Route path="/voter-overview" element={<VoterOverview />} />
+          </Route>
 
           
         </Routes>

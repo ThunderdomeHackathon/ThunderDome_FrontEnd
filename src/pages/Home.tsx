@@ -11,7 +11,7 @@ function Home() {
                     <h1>ThunderDome FrontEnd</h1>
                     </div>
                     <Link to="/org-login">
-                    <button>Organization Login</button>
+                    <button>Create an Election</button>
                     </Link>
                 </div>
 

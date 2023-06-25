@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@firebaseStuff/index";
 import "../styles/OrgLogin.css";
 
-const OrgSignup = () => {
+const VoterSignup = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
@@ -28,7 +28,7 @@ const OrgSignup = () => {
         });
 
     setLoading(false);
-    navigate("/org-overview");
+    navigate("/voter-overview");
         };
 
   return (
@@ -36,7 +36,7 @@ const OrgSignup = () => {
 
         <div 
         className='leftSide'
-        style={{ backgroundImage: `url(${"image2.jpg"})` }}>
+        style={{ backgroundImage: `url(${"image3.jpg"})` }}>
             </div> 
 
         <div className='rightSide'>
@@ -46,7 +46,7 @@ const OrgSignup = () => {
               <Loading />
             ) : (
               <div>
-                <h1>Organisation Signup</h1>
+                <h1>Voter Signup</h1>
                 <form className="contact-form">
                   <label>Email</label>
                   <input
@@ -79,4 +79,4 @@ const OrgSignup = () => {
   );
 };
 
-export default OrgSignup;
+export default VoterSignup;

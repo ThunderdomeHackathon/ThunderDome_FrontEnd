@@ -34,7 +34,7 @@ const OrgLogin = () => {
 
         <div 
         className='leftSide'
-        style={{ backgroundImage: `url(${"image.jpg"})` }}>
+        style={{ backgroundImage: `url(${"image2.jpg"})` }}>
             </div> 
 
         <div className='rightSide'>
