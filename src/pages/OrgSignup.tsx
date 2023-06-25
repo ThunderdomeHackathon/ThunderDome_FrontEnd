@@ -1,33 +1,35 @@
 import Loading from "@components/Loading";
 import React, { useState } from "react";
-import { useNavigate, Link} from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@firebaseStuff/index";
 import "../styles/OrgLogin.css";
-import OrgSignup from "./OrgSignup";
 
-const OrgLogin = () => {
+const OrgSignup = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
-  const handleLogin = async () => {
+  const handleSignUp = async () => {
     setLoading(true);
     setError(false);
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch (error) {
-      setError(true);
-    }
+
+    await createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+        // Account creation successful.
+        const user = userCredential.user;
+        })
+        .catch((error) => {
+        // An error happened.
+        setError(true);
+        console.error(error);
+        });
+
     setLoading(false);
     navigate("/org-overview");
-  };
-  if (auth.currentUser) {
-    // if the user is already logged in, redirect them to the overview.
-    navigate("/org-overview");
-  }
+        };
 
   return (
     <div className='contact'>
@@ -44,7 +46,7 @@ const OrgLogin = () => {
               <Loading />
             ) : (
               <div>
-                <h1>Organisation Login</h1>
+                <h1>Organisation Signup</h1>
                 <form className="contact-form">
                   <label>Email</label>
                   <input
@@ -60,21 +62,15 @@ const OrgLogin = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     type="password"
                   />
-                  {error && <p>Invalid email or password</p>}
                   <button
                     onClick={(e) => {
                       e.preventDefault();
-                      handleLogin();
+                      handleSignUp();
                     }}
                   >
-                    Sign in
+                    Sign up
                   </button>
-
-                  <Link to="/org-signup">
-                    <button>Create Account</button>
-                    </Link>
                 </form>
-                {/*Redirect to OrgSignup  */}
               </div>
             )}
           </div>
@@ -83,4 +79,4 @@ const OrgLogin = () => {
   );
 };
 
-export default OrgLogin;
+export default OrgSignup;
