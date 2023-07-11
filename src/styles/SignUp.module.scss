@@ -1,0 +1,49 @@
+.wrapper {
+  padding: 0 30px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.radioGroupWrapper {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  .radioWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
+    gap: 5px;
+  }
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.buttonContainer {
+   margin-top: 10px;
+}
+
+.button {
+  padding: 5px 30px;
+}
+
+.footer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

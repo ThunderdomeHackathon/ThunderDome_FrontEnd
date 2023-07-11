@@ -1,0 +1,37 @@
+.wrapper {
+  padding: 0 30px;
+}
+
+.errorText {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.buttonContainer {
+  margin-top: 10px;
+}
+
+.button {
+  padding: 5px 30px;
+}
+
+.footer {
+  margin-top: 20px;
+}
+
+.loadingIcon {
+  font-size: 20px;
+}

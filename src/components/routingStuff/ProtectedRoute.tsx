@@ -1,9 +1,9 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@firebaseStuff/index";
-import Loading from "./Loading";
+import { auth } from "../../firebaseStuff/index";
+import Loading from "../utility/Loading";
 
-const ProtectedRoute2 = () => {
+const ProtectedRoute = () => {
   const navigate = useNavigate();
   const [user, loading, error] = useAuthState(auth);
 
@@ -12,10 +12,10 @@ const ProtectedRoute2 = () => {
   }
 
   if (!user) {
-    navigate("/voter-login");
+    navigate("/login");
   }
 
   return <Outlet />;
 };
 
-export default ProtectedRoute2;
+export default ProtectedRoute;

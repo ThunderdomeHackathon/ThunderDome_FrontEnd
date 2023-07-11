@@ -1,0 +1,16 @@
+.wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 100px;
+
+  .authForm {
+    min-height: 400px;
+    padding: 20px 0;
+    width: 400px;
+    margin: 0 200px;
+
+    border: 1px solid black;
+  }
+}
