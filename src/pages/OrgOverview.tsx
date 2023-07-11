@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, getIdToken } from "@firebaseStuff/index";
 import { useNavigate } from "react-router-dom";
-import { CurrentElections } from "@components/CurrentElections";
+import { CurrentElections } from "@components/CurrentElectionsForOrganization";
 
 const OrgOverview = () => {
   const navigate = useNavigate();

@@ -39,7 +39,7 @@ export const CurrentElections = () => {
         <table>
           <thead>
             <tr>
-              <th>ID</th>
+              <th>Election Name</th>
               <th>Opening Time</th>
               <th>Closing Time</th>
             </tr>
@@ -48,7 +48,7 @@ export const CurrentElections = () => {
             {data.elections.map((election: any) => (
               // need to use opening_time NOT openingTime
               <tr key={election.id}>
-                <td>{election.id}</td>
+                <td>{election.name}</td>
                 <td>{election.opening_time}</td>
                 <td>{election.closing_time}</td>
               </tr>

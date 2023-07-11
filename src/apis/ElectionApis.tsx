@@ -1,6 +1,6 @@
 import { getIdToken } from "@firebaseStuff/index";
 
-export const createElection = async (openingTime: Date, closingTime: Date, candidates: Array<{ name: string; campaignMessage: string }>) => {
+export const createElection = async (name: string, openingTime: Date, closingTime: Date, candidates: Array<{ name: string; campaignMessage: string }>, voterEmails: Array<string>) => {
     const formattedCandidates = []
     for (const candidate of candidates) {
         formattedCandidates.push({ name: candidate.name, campaign_message: candidate.campaignMessage });
@@ -20,9 +20,11 @@ export const createElection = async (openingTime: Date, closingTime: Date, candi
             Authorization: `Bearer ${authToken}`,
         },
         body: JSON.stringify({
+            name: name,
             opening_time: openingTime,
             closing_time: closingTime,
             candidates: formattedCandidates,
+            voter_emails: voterEmails
         }),
     });
 
@@ -48,7 +50,7 @@ export const getCurrentElections = async () => {
     });
 
     if (!response.ok) {
-        throw new Error("Failed to create election.");
+        throw new Error("Failed to get current elections.");
     }
 
     return response.json();

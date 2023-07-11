@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, getIdToken } from "@firebaseStuff/index";
 import "../styles/OrgLogin.css";
+import { createOrganization } from "../apis/OrganizationApis";
 
 const OrgSignup = () => {
   const navigate = useNavigate();
@@ -22,18 +23,8 @@ const OrgSignup = () => {
     setLoading(true);
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      // Account creation successful.
-      const user = userCredential.user;
-      const authToken = await getIdToken()
-      const data = await fetch("http://localhost:8000/organizations", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${authToken}`,
-        },
-        body: JSON.stringify({ email }),
-      });
+      await createUserWithEmailAndPassword(auth, email, password);
+      await createOrganization(email);
     } catch (error) {
       // An error happened.
       setError(true);

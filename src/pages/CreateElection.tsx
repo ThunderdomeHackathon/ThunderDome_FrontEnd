@@ -8,26 +8,28 @@ interface Candidate {
     campaignMessage: string;
 }
 
-
 const CreateElection = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
+    const [electionName, setElectionName] = useState("");
     const [openingTime, setOpeningTime] = useState("");
     const [closingTime, setClosingTime] = useState("");
-    const [candidates, setCandidates] = useState<Candidate[]>([{ name: "", campaignMessage: "" }]);
+    const [candidates, setCandidates] = useState<Candidate[]>([
+        { name: "", campaignMessage: "" },
+    ]);
     const [timezoneOffset, setTimezoneOffset] = useState("");
+    const [voterEmails, setVoterEmails] = useState("");
     const [error, setError] = useState<string | null>(null);
 
     const handleCreateElection = async () => {
         setError(null);
 
         try {
-            // Perform validation of openingTime and closingTime
-            if (!openingTime || !closingTime) {
-                setError("Please set the opening and closing time.");
+            // Perform validation of electionName, openingTime, and closingTime
+            if (!electionName || !openingTime || !closingTime) {
+                setError("Please provide the election name, opening time, and closing time.");
                 return;
             }
-
 
             const formattedOpeningTime = new Date(openingTime);
             const formattedClosingTime = new Date(closingTime);
@@ -39,7 +41,7 @@ const CreateElection = () => {
 
             // Perform validation of candidates
             if (candidates.length < 2) {
-                setError("Please define at least two candidate.");
+                setError("Please define at least two candidates.");
                 return;
             }
 
@@ -62,9 +64,8 @@ const CreateElection = () => {
 
             if (hasDuplicateNames()) {
                 setError("Please make each candidate name unique");
-                return
+                return;
             }
-
 
             // Prepare candidates array
             const formattedCandidates = candidates.map((candidate) => ({
@@ -72,14 +73,17 @@ const CreateElection = () => {
                 campaignMessage: candidate.campaignMessage.trim(),
             }));
 
+            const voterEmailsList = extractEmails(voterEmails);
+
             setLoading(true);
 
-            console.log('asdfasdf', formattedOpeningTime, formattedClosingTime)
             // Call API to create the election
             const newElection = await createElection(
+                electionName.trim(),
                 formattedOpeningTime,
                 formattedClosingTime,
-                formattedCandidates
+                formattedCandidates,
+                voterEmailsList
             );
 
             // Handle success, e.g., show success message, navigate to another page
@@ -92,24 +96,27 @@ const CreateElection = () => {
         setLoading(false);
     };
 
-
     const handleTimezoneOffsetChange = (timezoneOffset: string) => {
         setTimezoneOffset(timezoneOffset);
     };
 
-
     const hasDuplicateNames = () => {
         const names = candidates.map((candidate) => candidate.name);
         const uniqueNames = new Set(names);
-
-        if (names.length !== uniqueNames.size) {
-            return true; // Duplicate names exist
-        }
-
-        return false; // No duplicate names
+        return names.length !== uniqueNames.size;
     };
 
-    const handleCandidateChange = (index: number, field: keyof Candidate, value: string) => {
+    const extractEmails = (emailString: string): string[] => {
+        const emailList: string[] = emailString.split(/\s+/);
+        const cleanedEmailList: string[] = emailList.map((email) => email.trim());
+        return cleanedEmailList;
+    };
+
+    const handleCandidateChange = (
+        index: number,
+        field: keyof Candidate,
+        value: string
+    ) => {
         const updatedCandidates = [...candidates];
         updatedCandidates[index] = { ...updatedCandidates[index], [field]: value };
         setCandidates(updatedCandidates);
@@ -125,14 +132,24 @@ const CreateElection = () => {
         setCandidates(updatedCandidates);
     };
 
+    const handleVoterEmailsChange = (voterEmails: string) => {
+        setVoterEmails(voterEmails);
+    };
+
     return (
         <div className="create-election">
             {loading ? (
                 <Loading />
             ) : (
                 <div>
-                    <h1>Create Elections</h1>
+                    <h1>Create Election</h1>
                     <form className="election-form">
+                        <label>Election Name</label>
+                        <input
+                            value={electionName}
+                            type="text"
+                            onChange={(e) => setElectionName(e.target.value)}
+                        />
                         <label>Opening Time</label>
                         <input
                             value={openingTime}
@@ -149,15 +166,17 @@ const CreateElection = () => {
                         <input
                             value={timezoneOffset}
                             type="text"
-                            onChange={(e) => handleTimezoneOffsetChange(e.target.value)}>
-                        </input>
+                            onChange={(e) => handleTimezoneOffsetChange(e.target.value)}
+                        />
                         <h2>Candidates</h2>
                         {candidates.map((candidate, index) => (
                             <div key={index} className="candidate-field">
                                 <input
                                     value={candidate.name}
                                     placeholder="Candidate Name"
-                                    onChange={(e) => handleCandidateChange(index, "name", e.target.value)}
+                                    onChange={(e) =>
+                                        handleCandidateChange(index, "name", e.target.value)
+                                    }
                                 />
                                 <input
                                     value={candidate.campaignMessage}
@@ -175,6 +194,12 @@ const CreateElection = () => {
                             Add Candidate
                         </button>
 
+                        <input
+                            value={voterEmails}
+                            type="text"
+                            placeholder="Voter emails (space separated)"
+                            onChange={(e) => handleVoterEmailsChange(e.target.value)}>
+                        </input>
                         {error && <p className="error-message">{error}</p>}
                         <button
                             onClick={(e) => {
@@ -186,8 +211,9 @@ const CreateElection = () => {
                         </button>
                     </form>
                 </div>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 };
 
