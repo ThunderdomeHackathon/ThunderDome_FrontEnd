@@ -34,7 +34,6 @@ const OrgSignup = () => {
         },
         body: JSON.stringify({ email }),
       });
-      console.log(data.body)
     } catch (error) {
       // An error happened.
       setError(true);

@@ -2,7 +2,7 @@ import Loading from "@components/Loading";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, getIdToken } from "@firebaseStuff/index";
-import { getOrganization } from "../apis/OrganizationApis";
+import { getCurrentElections } from "../apis/ElectionApis";
 import { useNavigate } from "react-router-dom";
 
 export const CurrentElections = () => {
@@ -13,7 +13,7 @@ export const CurrentElections = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const fetchedData = await getOrganization();
+        const fetchedData = await getCurrentElections();
         setData(fetchedData);
       } catch (error) {
         console.log(error);
@@ -35,24 +35,28 @@ export const CurrentElections = () => {
     }
 
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Opening Time</th>
-            <th>Closing Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.elections.map((election: any) => (
-            <tr key={election.id}>
-              <td>{election.id}</td>
-              <td>{election.openingTime}</td>
-              <td>{election.closingTime}</td>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Opening Time</th>
+              <th>Closing Time</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {data.elections.map((election: any) => (
+              // need to use opening_time NOT openingTime
+              <tr key={election.id}>
+                <td>{election.id}</td>
+                <td>{election.opening_time}</td>
+                <td>{election.closing_time}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <button onClick={handleCreateElection}>Create an election</button>
+      </div>
     );
   };
 

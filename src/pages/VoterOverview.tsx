@@ -28,7 +28,6 @@ const VoterOverview = () => {
     }
   };
 
-  console.log(user);
 
   const handleSignOut = () => {
     auth.signOut()
