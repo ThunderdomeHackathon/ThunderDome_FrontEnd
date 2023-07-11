@@ -21,3 +21,20 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const analytics = getAnalytics(app);
+
+
+export const getIdToken = async () => {
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  if (user) {
+    try {
+      const token = await user.getIdToken();
+      return token;
+    } catch (error) {
+      console.error("Error fetching ID token:", error);
+    }
+  }
+
+  return null;
+};
