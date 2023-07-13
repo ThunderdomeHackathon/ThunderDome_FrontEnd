@@ -1,36 +1,48 @@
 import Loading from "@components/Loading";
 import { useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@firebaseStuff/index";
 import { useNavigate } from "react-router-dom";
-import CurrentElectionsForVoter from "@components/CurrentElectionsForVoter";
+import ElectionsForVoter from "@components/ElectionsForVoter";
+import { Voter } from "../interfaces/voter";
+import { isString } from "lodash";
 
 const VoterOverview = () => {
   const navigate = useNavigate();
-  const [data, setData] = useState<any | null>(null);
-  const [user, loading, error] = useAuthState(auth);
-  const [loadingData, setLoadingData] = useState(false);
-
+  const [voter, setVoter] = useState<Voter | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  
 
   const handleSignOut = () => {
     auth.signOut()
       .then(() => {
-        navigate("/voter-login");
+        navigate('/');
       })
       .catch((error) => {
-        // An error happened.
+        setError('Something went wrong with signing out.')
         console.error(error);
       });
   };
 
+
+  if (loading) {
+    return (<div>
+      <h1>You are logged in as a voter.</h1>
+      <Loading />
+    </div>)
+  }
+
+  if (isString(error)) {
+    return (<div>
+      <h1>You are logged in as a voter</h1>
+      <text>{error}</text>
+    </div>)
+  }
+
   return (
     <div>
-      <h1>You are Logged In</h1>
-      {loading ? (
-        <Loading />
-      ) : (
-        CurrentElectionsForVoter()
-      )}
+      <h1>You are Logged In As A Voter</h1>
+      {ElectionsForVoter()}
       <button onClick={handleSignOut}>Sign Out</button>
     </div>
   );

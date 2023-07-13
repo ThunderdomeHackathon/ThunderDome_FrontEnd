@@ -1,4 +1,7 @@
 import { getIdToken } from "@firebaseStuff/index";
+import { Election, RawElection } from "../interfaces/election";
+import { Candidate, RawCandidate } from '../interfaces/candidate';
+import { formatRawElection } from "./helpers";
 
 export const createElection = async (name: string, openingTime: Date, closingTime: Date, candidates: Array<{ name: string; campaignMessage: string }>, voterEmails: Array<string>) => {
     const formattedCandidates = []
@@ -35,13 +38,11 @@ export const createElection = async (name: string, openingTime: Date, closingTim
     return response.json();
 };
 
-export const getCurrentElections = async () => {
+export const getElectionById = async (id: string) => {
     const authToken = await getIdToken();
-    if (!authToken) {
-        throw new Error("Organization is not logged in. Cannot create election.");
-    }
+    if (!authToken) { throw new Error("User is not logged in. Cannot get election.") }
 
-    const response = await fetch("http://localhost:8000/elections/not-closed", {
+    const response = await fetch(`http://localhost:8000/elections/${id}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -49,9 +50,8 @@ export const getCurrentElections = async () => {
         }
     });
 
-    if (!response.ok) {
-        throw new Error("Failed to get current elections.");
-    }
-
-    return response.json();
+    if (!response.ok) { throw new Error("Failed to get election.") }
+    const rawData: RawElection = await response.json();
+    const formattedElection: Election = formatRawElection(rawData);
+    return formattedElection;
 }

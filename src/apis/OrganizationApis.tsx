@@ -1,4 +1,6 @@
 import { getIdToken } from "@firebaseStuff/index";
+import { Election, RawElection } from '../interfaces/election';
+import { formatRawElection } from '../apis/helpers';
 
 
 export const createOrganization = async (email: string) => {
@@ -30,4 +32,23 @@ export const getOrganization = async () => {
         },
     });
     return response.json();
+}
+
+
+export const getElectionsForOrganization = async () => {
+    const authToken = await getIdToken();
+    if (!authToken) { throw new Error("Organization is not logged in. Cannot get elections.") }
+
+    const response = await fetch("http://localhost:8000/organizations/elections", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+        }
+    });
+
+    if (!response.ok) { throw new Error("Failed to get elections.") }
+    const rawData: { elections: RawElection[] } = await response.json();
+    const formattedElections: Election[] = rawData.elections.map<Election>((election) => formatRawElection(election));
+    return { elections: formattedElections };
 }
