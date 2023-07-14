@@ -1,5 +1,9 @@
 import { Election, RawElection } from '../interfaces/election';
 import { Candidate, RawCandidate } from '../interfaces/candidate';
+import { Voter, RawVoter } from '../interfaces/voter';
+import { Organization, RawOrganization } from '../interfaces/organization';
+
+
 
 
 
@@ -21,4 +25,27 @@ export const formatRawElection = (election: RawElection) => {
         createdAt: new Date(election.created_at)
     }
     return formattedElection;
+}
+
+
+export const formatRawVoter = (voter: RawVoter) => {
+    const formattedVoter: Voter = {
+        id: voter.id,
+        email: voter.email,
+        privateKey: voter.private_key,
+        createdAt: new Date(voter.created_at)
+    }
+    return formattedVoter;
+}
+
+
+export const formatRawOrganization = (organization: RawOrganization) => {
+    const formattedOrganization: Organization = {
+        id: organization.id,
+        email: organization.email,
+        elections: organization.elections.map((election: RawElection) => formatRawElection(election)),
+        privateKey: organization.private_key,
+        createdAt: new Date(organization.created_at)
+    }
+    return formattedOrganization
 }
