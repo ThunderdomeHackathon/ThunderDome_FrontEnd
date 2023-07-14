@@ -1,6 +1,7 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
 import '../styles/Home.css';
+
+import {Link} from 'react-router-dom';
+import React from 'react';
 
 function Home() {
     return (
@@ -10,7 +11,7 @@ function Home() {
                     <div className='subheaderContainer'>
                     <h1>ThunderDome FrontEnd</h1>
                     </div>
-                    <Link to="/org-login">
+                    <Link to="/organization-login">
                     <button>Create an Election</button>
                     </Link>
                 </div>

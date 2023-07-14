@@ -1,4 +1,4 @@
-import { Election, RawElection } from '../interfaces/election';
+import { Election, RawElection } from './Election';
 
 export interface Organization {
     id: string;

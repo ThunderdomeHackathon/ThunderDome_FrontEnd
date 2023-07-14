@@ -1,7 +1,7 @@
-import { getIdToken } from "@firebaseStuff/index";
-import { Election, RawElection } from '../interfaces/election';
-import { formatRawElection } from '../apis/helpers';
+import { Election, RawElection } from '../interfaces/Election';
 
+import { formatRawElection } from '../apis/helpers';
+import { getIdToken } from "@firebaseStuff/index";
 
 export const createOrganization = async (email: string) => {
     const authToken = await getIdToken();
@@ -22,7 +22,7 @@ export const createOrganization = async (email: string) => {
 export const getOrganization = async () => {
     const authToken = await getIdToken();
     if (authToken === null) {
-        throw new Error('Trying to fetch data while user is not logged in');
+        return null;
     }
     const response = await fetch("http://localhost:8000/organizations", {
         method: "GET",
@@ -31,7 +31,11 @@ export const getOrganization = async () => {
             Authorization: `Bearer ${authToken}`,
         },
     });
-    return response.json();
+    if (response.status === 404) {
+        return null;
+    } else {
+        return await response.json();
+    }
 }
 
 

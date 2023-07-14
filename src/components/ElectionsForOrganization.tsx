@@ -1,12 +1,12 @@
-import { isUndefined, isNull, isEmpty } from 'lodash';
-import Loading from '@components/Loading';
+import { isEmpty, isNull, isUndefined } from 'lodash';
 import { useEffect, useState } from 'react';
+
+import { Candidate } from '../interfaces/Candidate';
+import { Election } from '../interfaces/Election';
+import Loading from '@components/Loading';
 import ReactModal from 'react-modal';
 import { getElectionsForOrganization } from '../apis/OrganizationApis';
 import { useNavigate } from 'react-router-dom';
-import { Election } from '../interfaces/election';
-import { Candidate } from '../interfaces/candidate';
-
 
 export const ElectionsForOrganization = () => {
     const [loading, setLoading] = useState<boolean>(true);

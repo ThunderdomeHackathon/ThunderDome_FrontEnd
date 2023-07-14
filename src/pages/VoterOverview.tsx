@@ -1,10 +1,10 @@
-import Loading from "@components/Loading";
-import { useState } from "react";
-import { auth } from "@firebaseStuff/index";
-import { useNavigate } from "react-router-dom";
-import ElectionsForVoter from "@components/ElectionsForVoter";
-import { Voter } from "../interfaces/voter";
-import { isString } from "lodash";
+import ElectionsForVoter from '@components/ElectionsForVoter';
+import Loading from '@components/Loading';
+import { Voter } from '../interfaces/Voter';
+import { auth } from '@firebaseStuff/index';
+import { isString } from 'lodash';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const VoterOverview = () => {
   const navigate = useNavigate();

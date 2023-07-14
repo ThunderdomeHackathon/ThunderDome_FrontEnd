@@ -1,16 +1,18 @@
-import Loading from "@components/Loading";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, getIdToken } from "@firebaseStuff/index";
-import "../styles/OrgLogin.css";
-import { createOrganization } from "../apis/OrganizationApis";
+import '../styles/OrganizationLogin.css';
 
-const OrgSignup = () => {
+import React, { useState } from 'react'
+
+import Loading from '@components/Loading';
+import { auth } from '@firebaseStuff/index';
+import { createOrganization } from '../apis/OrganizationApis';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+
+const OrganizationSignup = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
 
   const handleSignUp = async () => {
@@ -28,12 +30,12 @@ const OrgSignup = () => {
     } catch (error) {
       // An error happened.
       setError(true);
-      console.error(error);
+      console.log(error);
     }
 
 
     setLoading(false);
-    navigate("/org-overview");
+    navigate('/organization-overview');
   };
 
   return (
@@ -41,7 +43,7 @@ const OrgSignup = () => {
 
       <div
         className='leftSide'
-        style={{ backgroundImage: `url(${"image2.jpg"})` }}>
+        style={{ backgroundImage: `url(${'image2.jpg'})` }}>
       </div>
 
       <div className='rightSide'>
@@ -51,12 +53,12 @@ const OrgSignup = () => {
             <Loading />
           ) : (
             <div>
-              <h1>Organisation Signup</h1>
-              <form className="contact-form">
+              <h1>Organization Signup</h1>
+              <form className='contact-form'>
                 <label>Email</label>
                 <input
                   value={email}
-                  type="email"
+                  type='email'
                   placeholder='Enter email...'
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -65,13 +67,13 @@ const OrgSignup = () => {
                   value={password}
                   placeholder='Enter password...'
                   onChange={(e) => setPassword(e.target.value)}
-                  type="password"
+                  type='password'
                 />
                 {error && (
                   <p>
                     {password.length < 6
-                      ? "Password must be at least 6 characters long"
-                      : "Error creating account"}
+                      ? 'Password must be at least 6 characters long'
+                      : 'Error creating account'}
                   </p>
                 )}
                 <button
@@ -91,4 +93,4 @@ const OrgSignup = () => {
   );
 };
 
-export default OrgSignup;
+export default OrganizationSignup;

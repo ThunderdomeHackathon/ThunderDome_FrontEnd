@@ -1,4 +1,4 @@
-import { Candidate, RawCandidate } from '../interfaces/candidate'
+import { Candidate, RawCandidate } from './Candidate'
 
 export interface Election {
     id: string;

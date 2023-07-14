@@ -1,8 +1,7 @@
-import { getIdToken } from '@firebaseStuff/index';
-import { RawElection, Election } from 'interfaces/election';
+import { Election, RawElection } from 'interfaces/Election';
+
 import { formatRawElection } from '../apis/helpers';
-
-
+import { getIdToken } from '@firebaseStuff/index';
 
 export const createVoter = async (email: string) => {
     const authToken = await getIdToken();
@@ -23,7 +22,7 @@ export const createVoter = async (email: string) => {
 export const getVoter = async () => {
     const authToken = await getIdToken();
     if (authToken === null) {
-        throw new Error('Trying to fetch data while user is not logged in');
+        return null;
     }
     const response = await fetch('http://localhost:8000/voters', {
         method: 'GET',
@@ -32,6 +31,9 @@ export const getVoter = async () => {
             Authorization: `Bearer ${authToken}`,
         },
     });
+    if (response.status === 404) {
+        return null;
+    }
     return response.json();
 }
 
@@ -39,7 +41,6 @@ export const getVoter = async () => {
 export const getElectionsForVoter = async () => {
     const authToken = await getIdToken();
     if (!authToken) { throw new Error('Voter is not logged in. Cannot get elections.') }
-    console.log('getting elections')
 
     const response = await fetch('http://localhost:8000/voters/elections', {
         method: 'GET',
@@ -52,6 +53,5 @@ export const getElectionsForVoter = async () => {
     if (!response.ok) { throw new Error('Failed to get elections.') }
     const rawData: { elections: RawElection[] } = await response.json();
     const formattedElections: Election[] = rawData.elections.map<Election>((election) => formatRawElection(election));
-    console.log('successfully got elections')
     return { elections: formattedElections };
 }

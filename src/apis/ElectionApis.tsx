@@ -1,21 +1,29 @@
-import { getIdToken } from "@firebaseStuff/index";
-import { Election, RawElection } from "../interfaces/election";
-import { Candidate, RawCandidate } from '../interfaces/candidate';
+import { Candidate, RawCandidate } from '../interfaces/Candidate';
+import { Election, RawElection } from "../interfaces/Election";
+
 import { formatRawElection } from "./helpers";
+import { getIdToken } from "@firebaseStuff/index";
 
 export const createElection = async (name: string, openingTime: Date, closingTime: Date, candidates: Array<{ name: string; campaignMessage: string }>, voterEmails: Array<string>) => {
     const formattedCandidates = []
     for (const candidate of candidates) {
         formattedCandidates.push({ name: candidate.name, campaign_message: candidate.campaignMessage });
     }
-    const formattedOpeningTime = openingTime.toLocaleString('en-US', { timeZone: 'UTC', timeZoneName: 'short' });
-    const formattedClosingTime = closingTime.toLocaleString('en-US', { timeZone: 'UTC', timeZoneName: 'short' });
+    const formattedOpeningTime = openingTime.toISOString();
+    const formattedClosingTime = closingTime.toISOString();
 
     const authToken = await getIdToken();
     if (!authToken) {
         throw new Error("Organization is not logged in. Cannot create election.");
     }
 
+    console.log(JSON.stringify({
+        name: name,
+        opening_time: formattedOpeningTime,
+        closing_time: formattedClosingTime,
+        candidates: formattedCandidates,
+        voter_emails: voterEmails
+    }))
     const response = await fetch("http://localhost:8000/elections", {
         method: "POST",
         headers: {
@@ -24,18 +32,14 @@ export const createElection = async (name: string, openingTime: Date, closingTim
         },
         body: JSON.stringify({
             name: name,
-            opening_time: openingTime,
-            closing_time: closingTime,
+            opening_time: formattedOpeningTime,
+            closing_time: formattedClosingTime,
             candidates: formattedCandidates,
             voter_emails: voterEmails
         }),
     });
 
-    if (!response.ok) {
-        throw new Error("Failed to create election.");
-    }
-
-    return response.json();
+    return response;
 };
 
 export const getElectionById = async (id: string) => {

@@ -1,11 +1,7 @@
-import { Election, RawElection } from '../interfaces/election';
-import { Candidate, RawCandidate } from '../interfaces/candidate';
-import { Voter, RawVoter } from '../interfaces/voter';
-import { Organization, RawOrganization } from '../interfaces/organization';
-
-
-
-
+import { Candidate, RawCandidate } from '../interfaces/Candidate';
+import { Election, RawElection } from '../interfaces/Election';
+import { Organization, RawOrganization } from '../interfaces/Organization';
+import { RawVoter, Voter } from '../interfaces/Voter';
 
 export const formatRawElection = (election: RawElection) => {
     const formattedElection: Election = {

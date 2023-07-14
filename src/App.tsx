@@ -1,17 +1,18 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import OrgLogin from "./pages/OrgLogin";
-import ProtectedRoute from "./components/ProtectedRoute";
-import OrgOverview from "./pages/OrgOverview";
-import Home from "./pages/Home";
-import OrgSignup from "@pages/OrgSignup";
-import Navbar from "./components/Navbar";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+
+import CreateElection from "@pages/CreateElection";
 import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import OrgLogin from "./pages/OrganizationLogin";
+import OrganizationOverview from "./pages/OrganizationOverview";
+import OrganizationSignup from "@pages/OrganizationSignup";
+import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute2 from "@components/ProtectedRoute2";
+import React from "react";
 import VoterLogin from "@pages/VoterLogin";
 import VoterOverview from "@pages/VoterOverview";
 import VoterSignup from "@pages/VoterSignup";
-import ProtectedRoute2 from "@components/ProtectedRoute2";
-import CreateElection from "@pages/CreateElection";
 
 const App: React.FC = () => {
   return (
@@ -22,13 +23,13 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
 
           {/*Organization Login and Signup*/}
-          <Route path="/org-signup" element={<OrgSignup />} />
+          <Route path="/organization-signup" element={<OrganizationSignup />} />
           <Route
-            path="/org-login"
+            path="/organization-login"
             element={<OrgLogin />}
           />
           <Route element={<ProtectedRoute />}>
-            <Route path="/org-overview" element={<OrgOverview />} />
+            <Route path="/organization-overview" element={<OrganizationOverview />} />
           </Route>
 
           {/*Voter Login and Signup*/}
@@ -43,7 +44,7 @@ const App: React.FC = () => {
 
           {/*Create election*/}
           <Route element={<ProtectedRoute />}>
-            <Route path="/org-overview/create-election" element={<CreateElection />} />
+            <Route path="/organization-overview/create-election" element={<CreateElection />} />
           </Route>
 
         </Routes>

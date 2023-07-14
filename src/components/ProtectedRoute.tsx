@@ -1,7 +1,8 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@firebaseStuff/index";
+
 import Loading from "./Loading";
+import { auth } from "@firebaseStuff/index";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const ProtectedRoute = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const ProtectedRoute = () => {
   }
 
   if (!user) {
-    navigate("/org-login");
+    navigate("/organization-login");
   }
 
   return <Outlet />;

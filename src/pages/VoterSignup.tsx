@@ -1,16 +1,18 @@
-import Loading from "@components/Loading";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@firebaseStuff/index";
-import "../styles/OrgLogin.css";
-import { createVoter } from "../apis/VoterApis";
+import '../styles/OrgLogin.css';
+
+import React, { useState } from 'react';
+
+import Loading from '@components/Loading';
+import { auth } from '@firebaseStuff/index';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createVoter } from '../apis/VoterApis';
+import { useNavigate } from 'react-router-dom';
 
 const VoterSignup = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
 
   const handleSignUp = async () => {
@@ -32,7 +34,7 @@ const VoterSignup = () => {
     }
 
     setLoading(false);
-    navigate("/voter-overview");
+    navigate('/voter-overview');
   };
 
   return (
@@ -40,7 +42,7 @@ const VoterSignup = () => {
 
       <div
         className='leftSide'
-        style={{ backgroundImage: `url(${"image3.jpg"})` }}>
+        style={{ backgroundImage: `url(${'image3.jpg'})` }}>
       </div>
 
       <div className='rightSide'>
@@ -51,11 +53,11 @@ const VoterSignup = () => {
           ) : (
             <div>
               <h1>Voter Signup</h1>
-              <form className="contact-form">
+              <form className='contact-form'>
                 <label>Email</label>
                 <input
                   value={email}
-                  type="email"
+                  type='email'
                   placeholder='Enter email...'
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -64,7 +66,7 @@ const VoterSignup = () => {
                   value={password}
                   placeholder='Enter password...'
                   onChange={(e) => setPassword(e.target.value)}
-                  type="password"
+                  type='password'
                 />
                 <button
                   onClick={(e) => {

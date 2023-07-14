@@ -1,10 +1,11 @@
-import { isEmpty, isNull, isString, isUndefined } from 'lodash';
+import { isEmpty, isNull, isUndefined } from 'lodash';
+import { useEffect, useState } from 'react';
+
+import { Candidate } from '../interfaces/Candidate';
+import { Election } from '../interfaces/Election';
 import Loading from '@components/Loading';
-import { useEffect, useState, ReactNode } from 'react';
-import { getElectionsForVoter } from '../apis/VoterApis';
 import ReactModal from 'react-modal';
-import { Election } from '../interfaces/election';
-import { Candidate } from '../interfaces/candidate';
+import { getElectionsForVoter } from '../apis/VoterApis';
 
 export const ElectionsForVoter = () => {
     const [loading, setLoading] = useState<boolean>(false);
@@ -41,7 +42,6 @@ export const ElectionsForVoter = () => {
 
 
     const handleVoteForCandidateById = (candidateId: string) => {
-        console.log('Voted for candidate with id', candidateId)
         setVotedCandidateId(candidateId)
     }
 

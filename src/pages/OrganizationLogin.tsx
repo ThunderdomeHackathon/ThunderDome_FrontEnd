@@ -4,27 +4,27 @@ import { Link, useNavigate } from 'react-router-dom';
 import { isNull, isString, isUndefined } from 'lodash';
 
 import Loading from '@components/Loading';
-import { getVoter } from '../apis/VoterApis';
+import { getOrganization } from '../apis/OrganizationApis';
 import { signIn } from '../apis/FirebaseApis';
 import { useState } from 'react';
 
-const VoterLogin = () => {
+const OrganizationLogin = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(false);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
 
-  
+
   const handleLogin = async () => {
-    setError(null);
     setLoading(true);
+    setError(null);    
     const userCredential = await signIn(email, password);
-    const foundUser = await getVoter();
-    if (!isUndefined(userCredential) && !isNull(foundUser)) {
+    const foundOrganization = await getOrganization();
+    if (!isUndefined(userCredential) && !isNull(foundOrganization)) {
       setLoading(false);
       setError(null);
-      navigate('/voter-overview');
+      navigate('/organization-overview');
     }
     setLoading(false);
     setError('Could not sign in. Please try again.')
@@ -45,7 +45,7 @@ const VoterLogin = () => {
             <Loading />
           ) : (
             <div>
-              <h1>Voter Login</h1>
+              <h1>Organization Login</h1>
               <form className='contact-form'>
                 <label>Email</label>
                 <input
@@ -71,11 +71,11 @@ const VoterLogin = () => {
                   Sign in
                 </button>
 
-                <Link to='/voter-signup'>
+                <Link to='/organization-signup'>
                   <button>Create Account</button>
                 </Link>
               </form>
-              {/*Redirect to VoterSignup  */}
+              {/*Redirect to OrganizationSignup  */}
             </div>
           )}
         </div>
@@ -84,4 +84,4 @@ const VoterLogin = () => {
   );
 };
 
-export default VoterLogin;
+export default OrganizationLogin;
