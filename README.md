@@ -1,11 +1,13 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Note: The URL for the frontend is currently not compatible with the backend, so please deploy the frontend and backend locally.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
+### `npm i`
 ### `npm start`
 
 Runs the app in the development mode.\
