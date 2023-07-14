@@ -1,21 +1,20 @@
-import '../styles/OrganizationLogin.css';
+import "../styles/OrganizationLogin.css";
 
-import { Link, useNavigate } from 'react-router-dom';
-import { isNull, isString, isUndefined } from 'lodash';
+import { Link, useNavigate } from "react-router-dom";
+import { isNull, isString, isUndefined } from "lodash";
 
-import Loading from '@components/Loading';
-import { getVoter } from '../apis/VoterApis';
-import { signIn } from '../apis/FirebaseApis';
-import { useState } from 'react';
+import Loading from "@components/Loading";
+import { getVoter } from "../api/VoterApis";
+import { signIn } from "../api/FirebaseApi";
+import { useState } from "react";
 
 const VoterLogin = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(false);
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
-  
   const handleLogin = async () => {
     setError(null);
     setLoading(true);
@@ -24,42 +23,40 @@ const VoterLogin = () => {
     if (!isUndefined(userCredential) && !isNull(foundUser)) {
       setLoading(false);
       setError(null);
-      navigate('/voter-overview');
+      navigate("/overview");
     }
     setLoading(false);
-    setError('Could not sign in. Please try again.')
+    setError("Could not sign in. Please try again.");
   };
 
   return (
-    <div className='contact'>
-
+    <div className="contact">
       <div
-        className='leftSide'
-        style={{ backgroundImage: `url(${'image2.jpg'})` }}>
-      </div>
+        className="leftSide"
+        style={{ backgroundImage: `url(${"image2.jpg"})` }}
+      ></div>
 
-      <div className='rightSide'>
-
+      <div className="rightSide">
         <div>
           {loading ? (
             <Loading />
           ) : (
             <div>
               <h1>Voter Login</h1>
-              <form className='contact-form'>
+              <form className="contact-form">
                 <label>Email</label>
                 <input
                   value={email}
-                  type='email'
-                  placeholder='Enter email...'
+                  type="email"
+                  placeholder="Enter email..."
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <label>Password</label>
                 <input
                   value={password}
-                  placeholder='Enter password...'
+                  placeholder="Enter password..."
                   onChange={(e) => setPassword(e.target.value)}
-                  type='password'
+                  type="password"
                 />
                 {isString(error) && <p>{error}</p>}
                 <button
@@ -71,7 +68,7 @@ const VoterLogin = () => {
                   Sign in
                 </button>
 
-                <Link to='/voter-signup'>
+                <Link to="/voter-signup">
                   <button>Create Account</button>
                 </Link>
               </form>

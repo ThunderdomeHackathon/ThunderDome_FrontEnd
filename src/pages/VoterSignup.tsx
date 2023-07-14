@@ -1,18 +1,19 @@
-import '../styles/OrgLogin.css';
+import "../styles/OrgLogin.css";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import Loading from '@components/Loading';
-import { auth } from '@firebaseStuff/index';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { createVoter } from '../apis/VoterApis';
-import { useNavigate } from 'react-router-dom';
+import Loading from "@components/Loading";
+import { auth } from "@firebaseStuff/index";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createVoter } from "../api/VoterApis";
+import { useNavigate } from "react-router-dom";
+import { createUser } from "@api/UserApi";
 
 const VoterSignup = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
   const handleSignUp = async () => {
@@ -26,6 +27,7 @@ const VoterSignup = () => {
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
+      await createUser(email, true)
       await createVoter(email);
     } catch (error) {
       // An error happened.
@@ -34,39 +36,37 @@ const VoterSignup = () => {
     }
 
     setLoading(false);
-    navigate('/voter-overview');
+    navigate("/overview");
   };
 
   return (
-    <div className='contact'>
-
+    <div className="contact">
       <div
-        className='leftSide'
-        style={{ backgroundImage: `url(${'image3.jpg'})` }}>
-      </div>
+        className="leftSide"
+        style={{ backgroundImage: `url(${"image3.jpg"})` }}
+      ></div>
 
-      <div className='rightSide'>
-
+      <div className="rightSide">
         <div>
           {loading ? (
             <Loading />
           ) : (
             <div>
               <h1>Voter Signup</h1>
-              <form className='contact-form'>
+              <form className="contact-form">
                 <label>Email</label>
                 <input
                   value={email}
-                  type='email'
-                  placeholder='Enter email...'
+                  type="email"
+                  placeholder="Enter email..."
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <label>Password</label>
                 <input
                   value={password}
-                  placeholder='Enter password...'
+                  placeholder="Enter password..."
                   onChange={(e) => setPassword(e.target.value)}
-                  type='password'
+                  type="password"
                 />
                 <button
                   onClick={(e) => {

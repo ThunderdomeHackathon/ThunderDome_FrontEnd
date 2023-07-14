@@ -5,7 +5,8 @@
       "@components/*": ["components/*"],
       "@firebaseStuff/*": ["firebaseStuff/*"],
       "@pages/*": ["pages/*"],
-      "@styles/*": ["styles/*"]
+      "@styles/*": ["styles/*"],
+      "@api/*": ["api/*"]
     }
   }
 }

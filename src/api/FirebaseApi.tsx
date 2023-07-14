@@ -1,7 +1,6 @@
 import { createUserWithEmailAndPassword, signOut as firebaseSignOut, signInWithEmailAndPassword } from 'firebase/auth';
 
 import { auth } from '@firebaseStuff/index';
-import { isUndefined } from 'lodash';
 
 export const createUserInFirebase = async (email: string, password: string, setLoading: CallableFunction, setError: CallableFunction) => {
   try {

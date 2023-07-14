@@ -1,18 +1,19 @@
-import '../styles/OrganizationLogin.css';
+import "../styles/OrganizationLogin.css";
 
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-import Loading from '@components/Loading';
-import { auth } from '@firebaseStuff/index';
-import { createOrganization } from '../apis/OrganizationApis';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import Loading from "@components/Loading";
+import { auth } from "@firebaseStuff/index";
+import { createOrganization } from "../api/OrganizationApis";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { createUser } from "@api/UserApi";
 
 const OrganizationSignup = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
   const handleSignUp = async () => {
@@ -27,53 +28,51 @@ const OrganizationSignup = () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       await createOrganization(email);
+      await createUser(email, false)
     } catch (error) {
       // An error happened.
       setError(true);
       console.log(error);
     }
 
-
     setLoading(false);
-    navigate('/organization-overview');
+    navigate("/overview");
   };
 
   return (
-    <div className='contact'>
-
+    <div className="contact">
       <div
-        className='leftSide'
-        style={{ backgroundImage: `url(${'image2.jpg'})` }}>
-      </div>
+        className="leftSide"
+        style={{ backgroundImage: `url(${"image2.jpg"})` }}
+      ></div>
 
-      <div className='rightSide'>
-
+      <div className="rightSide">
         <div>
           {loading ? (
             <Loading />
           ) : (
             <div>
               <h1>Organization Signup</h1>
-              <form className='contact-form'>
+              <form className="contact-form">
                 <label>Email</label>
                 <input
                   value={email}
-                  type='email'
-                  placeholder='Enter email...'
+                  type="email"
+                  placeholder="Enter email..."
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <label>Password</label>
                 <input
                   value={password}
-                  placeholder='Enter password...'
+                  placeholder="Enter password..."
                   onChange={(e) => setPassword(e.target.value)}
-                  type='password'
+                  type="password"
                 />
                 {error && (
                   <p>
                     {password.length < 6
-                      ? 'Password must be at least 6 characters long'
-                      : 'Error creating account'}
+                      ? "Password must be at least 6 characters long"
+                      : "Error creating account"}
                   </p>
                 )}
                 <button

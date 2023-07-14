@@ -32,7 +32,7 @@ export const getIdToken = async () => {
       const token = await user.getIdToken();
       return token;
     } catch (error) {
-      console.error("Error fetching ID token:", error);
+      throw error;
     }
   }
 
