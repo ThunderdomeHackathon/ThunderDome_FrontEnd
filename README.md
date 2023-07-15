@@ -1,9 +1,8 @@
-# Getting Started with Create React App
+# ThunderDome FrontEnd App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-Note: The URL for the frontend is currently not compatible with the backend, so please deploy the frontend and backend locally.
+Note: The URL for the frontend that was provided upon submission of this project is not compatible with the backend when it comes to functionality, so please deploy the frontend and backend locally in order to test the voting system.
 
-## Available Scripts
+## Scripts to deploy frontend
 
 In the project directory, you can run:
 
