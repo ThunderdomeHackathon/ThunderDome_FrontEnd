@@ -2,15 +2,17 @@ import "../styles/Home.css";
 
 import { Link } from "react-router-dom";
 import React from "react";
+import HeroSection from "../components/HeroSection";
 
 function Home() {
   return (
     <div>
-      <div className="home" style={{ backgroundImage: `url(${"image.jpg"})` }}>
+      <HeroSection />
+      <div className="home" style={{ backgroundColor: "black" }}>
         <div className="headerContainer">
-          <div className="subheaderContainer">
-            <h1>ThunderDome FrontEnd</h1>
-          </div>
+        <div className="subheaderContainer">
+          <h1>ThunderDome Voting System</h1>
+        </div>
           <Link to="/voter-login">
             <button>Vote</button>
           </Link>
