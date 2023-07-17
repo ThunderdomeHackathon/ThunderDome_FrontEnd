@@ -1,5 +1,5 @@
 import { Candidate, RawCandidate } from "../interfaces/Candidate";
-import { Election, RawElection } from "../interfaces/Election";
+import { Election, RawElection, ElectionResults } from "../interfaces/Election";
 
 import { formatRawElection } from "./helpers";
 import { getIdToken } from "@firebaseStuff/index";
@@ -75,3 +75,45 @@ export const getElectionById = async (id: string) => {
   const formattedElection: Election = formatRawElection(rawData);
   return formattedElection;
 };
+
+export const cast_vote = async (candidate_id: string, election_id: string) => {
+  const authToken = await getIdToken();
+  if (authToken === null){
+    throw new Error("User is not logged in. Cannot cast vote")
+  }
+
+  const response = await fetch(`${apiBaseUrl}/elections/${election_id}/candidates/${candidate_id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authToken}`,
+    },
+
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to cast vote.")
+  }
+};
+
+export const get_election_results =async (election_id: string) => {
+  const authToken = await getIdToken();
+  if (!authToken) {
+    throw new Error("User is not logged in. Cannot get election.")
+  }
+
+  const response = await fetch(`${apiBaseUrl}/elections/${election_id}/results`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authToken}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to get election results.");
+  }
+
+  const electionResults: ElectionResults = await response.json();
+  return electionResults;
+}

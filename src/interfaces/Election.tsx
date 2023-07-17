@@ -1,4 +1,5 @@
 import { Candidate, RawCandidate } from './Candidate'
+import { CandidateResults } from './CandidateResults';
 
 export interface Election {
     id: string;
@@ -16,4 +17,10 @@ export interface RawElection {
     closing_time: string;
     candidates: RawCandidate[];
     created_at: string;
+};
+
+// Praise Code: created an interface for ElectionResults and RawElectionResults
+export interface ElectionResults {
+    id: string;
+    candidates: CandidateResults[];
 };
