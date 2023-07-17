@@ -4,8 +4,8 @@ import React, { useState } from "react";
 
 import Loading from "@components/Loading";
 import { auth } from "@firebaseStuff/index";
-import { createOrganization } from "../api/OrganizationApis";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createOrganization } from '../api/OrganizationApi';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
 import { createUser } from "@api/UserApi";
 

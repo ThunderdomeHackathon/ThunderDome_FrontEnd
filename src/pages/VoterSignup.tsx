@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Loading from "@components/Loading";
 import { auth } from "@firebaseStuff/index";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { createVoter } from "../api/VoterApis";
+import { createVoter } from "../api/VoterApi";
 import { useNavigate } from "react-router-dom";
 import { createUser } from "@api/UserApi";
 

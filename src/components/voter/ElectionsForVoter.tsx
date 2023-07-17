@@ -5,7 +5,7 @@ import { Candidate } from "../../interfaces/Candidate";
 import { Election } from "../../interfaces/Election";
 import Loading from "@components/Loading";
 import ReactModal from "react-modal";
-import { getElectionsForVoter } from "../../api/VoterApis";
+import { getElectionsForVoter } from "../../api/VoterApi";
 
 export const ElectionsForVoter = () => {
   const [loading, setLoading] = useState<boolean>(false);

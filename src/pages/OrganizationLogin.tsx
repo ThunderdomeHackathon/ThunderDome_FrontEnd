@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { isNull, isString, isUndefined } from "lodash";
 
 import Loading from "@components/Loading";
-import { getOrganization } from "../api/OrganizationApis";
+import { getOrganization } from "../api/OrganizationApi";
 import { signIn } from "../api/FirebaseApi";
 import { useState } from "react";
 

@@ -5,7 +5,7 @@ import { Candidate } from "../../interfaces/Candidate";
 import { Election } from "../../interfaces/Election";
 import Loading from "@components/Loading";
 import ReactModal from "react-modal";
-import { getElectionsForOrganization } from "../../api/OrganizationApis";
+import { getElectionsForOrganization } from "../../api/OrganizationApi";
 import { useNavigate } from "react-router-dom";
 
 export const ElectionsForOrganization = () => {

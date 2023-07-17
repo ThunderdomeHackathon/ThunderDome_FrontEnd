@@ -76,7 +76,7 @@ export const getElectionById = async (id: string) => {
   return formattedElection;
 };
 
-export const cast_vote = async (candidate_id: string, election_id: string) => {
+export const castVote = async (candidate_id: string, election_id: string) => {
   const authToken = await getIdToken();
   if (authToken === null){
     throw new Error("User is not logged in. Cannot cast vote")
@@ -96,7 +96,7 @@ export const cast_vote = async (candidate_id: string, election_id: string) => {
   }
 };
 
-export const get_election_results =async (election_id: string) => {
+export const getElectionResults =async (election_id: string) => {
   const authToken = await getIdToken();
   if (!authToken) {
     throw new Error("User is not logged in. Cannot get election.")
