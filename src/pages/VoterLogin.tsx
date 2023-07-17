@@ -33,7 +33,7 @@ const VoterLogin = () => {
     <div className="contact">
       <div
         className="leftSide"
-        style={{ backgroundImage: `url(${"image2.jpg"})` }}
+        style={{ backgroundImage: `url(${"image3.jpg"})` }}
       ></div>
 
       <div className="rightSide">

@@ -1,18 +1,26 @@
 import "../styles/Home.css";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import HeroSection from "../components/HeroSection";
 
 function Home() {
+
+  const navigate = useNavigate();
+  const AboutUsClick = () => {
+    navigate("/about-us");
+  }
+
   return (
     <div>
       <HeroSection />
       <div className="home" style={{ backgroundColor: "black" }}>
         <div className="headerContainer">
-        <div className="subheaderContainer">
-          <h1>ThunderDome Voting System</h1>
-        </div>
+
+          <div className="subheaderContainer" onClick={AboutUsClick}>
+            <h1>ThunderDome Voting System</h1>
+          </div>
+
           <Link to="/voter-login">
             <button>Vote</button>
           </Link>
