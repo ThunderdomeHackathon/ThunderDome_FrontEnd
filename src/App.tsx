@@ -14,6 +14,7 @@ import VoterOverview from "@pages/VoterOverview";
 import VoterSignup from "@pages/VoterSignup";
 import Overview from "@pages/Overview";
 import AboutUs from "@pages/AboutUs";
+
 import UnprotectedRoute from "@components/UnprotectedRoute";
 import './App.css';
 
