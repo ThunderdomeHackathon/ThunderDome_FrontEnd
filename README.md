@@ -22,6 +22,7 @@ To run the frontend locally on your machine, follow the steps below:
 
 ```bash
 npm i
+```
 
 ### Running the Application
 
@@ -29,6 +30,7 @@ To start the frontend, use the following command:
 
 ```bash
 npm start
+```
 
 This will run the app in the development mode. Open http://localhost:3000 to view it in your web browser.
 
@@ -40,7 +42,7 @@ To build the frontend for production, use the following command:
 
 ```bash
 npm run build
-
+```
 
 ## Learn More
 
