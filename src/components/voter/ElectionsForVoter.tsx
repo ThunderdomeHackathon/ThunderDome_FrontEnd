@@ -6,6 +6,7 @@ import { Election } from "../../interfaces/Election";
 import Loading from "@components/Loading";
 import ReactModal from "react-modal";
 import { getElectionsForVoter } from "../../api/VoterApi";
+import "../../styles/VoterOverview.css";
 
 export const ElectionsForVoter = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -48,7 +49,7 @@ export const ElectionsForVoter = () => {
 
   const ElectionForVoter = () => {
     return (
-      <div>
+      <div className='electionforvoter1'>
         <table>
           <thead>
             <tr>
@@ -117,7 +118,7 @@ export const ElectionsForVoter = () => {
   }
 
   return (
-    <div>
+    <div className='electionforvoter2'>
       <table>
         <thead>
           <tr>

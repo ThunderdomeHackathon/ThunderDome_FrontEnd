@@ -1,0 +1,162 @@
+/* Modern CSS styles for ElectionsForVoter component */
+
+/* Common styles for tables and cells */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+  }
+  
+  th,
+  td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  /* Styling for the main container */
+  .electionforvoter1,
+  .electionforvoter2 {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+  
+  /* Styling for the election details table */
+  .electionforvoter1 table {
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .electionforvoter1 th {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  /* Styling for the candidates table */
+  .electionforvoter1 table:nth-child(2) {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .electionforvoter1 th,
+  .electionforvoter1 td {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .electionforvoter1 tr:last-child td {
+    border-bottom: none;
+  }
+  
+  /* Add space between election tables */
+  .electionforvoter1 table + table {
+    margin-top: 30px;
+  }
+  
+  /* Styling for the vote button */
+  .electionforvoter1 button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .electionforvoter1 button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 600px) {
+    /* Reduce padding for smaller screens */
+    .electionforvoter1,
+    .electionforvoter2 {
+      padding: 10px;
+    }
+  
+    /* Make tables scrollable on smaller screens */
+    .electionforvoter1 table,
+    .electionforvoter2 table {
+      overflow-x: auto;
+    }
+  
+    /* Hide long election time strings on small screens */
+    .electionforvoter1 td:nth-child(2),
+    .electionforvoter1 td:nth-child(3),
+    .electionforvoter2 td:nth-child(2),
+    .electionforvoter2 td:nth-child(3) {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  
+  .VoterOverview {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+  }
+  
+  .VoterOverview .leftSide {
+    height: 100%;
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .VoterOverview .rightSide {
+    height: 100%;
+    flex: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .VoterOverview .rightSide h1 {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    font-weight: 10;
+    font-size: 50px;
+    align-items: center;
+    margin-left: 30px;
+  }
+
+  .leftSide {
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .leftSide h1 {
+    font-size: 36px;
+    font-weight: bold;
+    align-items: center;
+    padding-left: 150px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+    /* Media query for smaller screens */
+@media (max-width: 768px) {
+    .leftSide h1 {
+      font-size: 24px; /* Reduce font size for smaller screens */
+      padding-left: 20px; /* Adjust left padding for smaller screens */
+    }
+  }
+  
+  /* Media query for even smaller screens */
+  @media (max-width: 480px) {
+    .leftSide h1 {
+      font-size: 20px; /* Further reduce font size for even smaller screens */
+      padding-left: 10px; /* Adjust left padding for even smaller screens */
+    }
+  }
