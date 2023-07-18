@@ -46,6 +46,8 @@
   /* Media Query for smaller screens */
   @media only screen and (max-width: 768px) {
     .aboutBottom p {
+      padding-left: 20px;
+      padding-right: 20px;
       padding-top: 30px; /* Reduce padding on smaller screens */
     }
     

@@ -126,4 +126,30 @@
   }
 }
 
+   /* Media query for smaller window sizes */
+   @media (max-width: 768px) {
+    .headerContainer h1 {
+      font-size: 47px;
+      align-items: center;
+    }
+
+    .headerContainer p {
+      font-size: 16px;
+    }
+
+    .headerContainer button {
+      font-size: 18px;
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+    }
+
+    .subheaderContainer {
+      width: 100%;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
 
