@@ -1,6 +1,6 @@
 # ThunderDome FrontEnd App
 
-Note: The URL for the frontend that was provided upon submission of this project is not compatible with the backend when it comes to functionality, so please deploy the frontend and backend locally in order to test the voting system.
+Note: The URL for the frontend that was provided upon submission of this project is not functional at the moment so please deploy the frontend and backend locally in order to test the voting system.
 
 ## Scripts to deploy frontend
 
