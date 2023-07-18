@@ -7,6 +7,7 @@ import Loading from "@components/Loading";
 import ReactModal from "react-modal";
 import { getElectionsForOrganization } from "../../api/OrganizationApi";
 import { useNavigate } from "react-router-dom";
+import "../../styles/OrgOverview.css";
 
 export const ElectionsForOrganization = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -99,7 +100,7 @@ export const ElectionsForOrganization = () => {
   }
 
   return (
-    <div>
+    <div className="electionsforOrgs">
       <table>
         <thead>
           <tr>

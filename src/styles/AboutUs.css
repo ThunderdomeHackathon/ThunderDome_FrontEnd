@@ -1,0 +1,93 @@
+.about {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+  }
+  
+  .aboutTop {
+    width: 100%;
+    height: 45%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  }
+  
+  .aboutBottom {
+    display: flex;
+    flex-direction: column;
+    height: 55%;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .aboutBottom p {
+    width: 100%; /* Adjust the width to 100% */
+    max-width: 1200px; /* Set a maximum width of 1200px */
+    padding-top: 70px;
+    color: white;
+  }
+  
+  .about .aboutBottom h1 {
+    font-weight: 400;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 100px;
+    color: white;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    transform: translateY(-40px);
+    padding-bottom: 30px;
+    padding-top: 50px;
+  }
+  
+  /* Media Query for smaller screens */
+  @media only screen and (max-width: 768px) {
+    .aboutBottom p {
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 30px; /* Reduce padding on smaller screens */
+    }
+    
+    .about .aboutBottom h1 {
+      font-size: 60px; /* Reduce font size on smaller screens */
+      transform: translateY(-20px); /* Adjust the vertical positioning on smaller screens */
+    }
+  }
+
+  .sliding-background {
+    width: 100%;
+    height: 70vh;
+    background: no-repeat center center;
+    background-size: cover;
+    position: relative;
+    animation: slideBackground 10s linear infinite;
+  }
+  
+  @keyframes slideBackground {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 0% 100%;
+    }
+  }
+
+  .aboutBottom h1 {
+    font-size: 60px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #fff, #fff 50%, #4CAF50 50%, #006400);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  
+
+  
+  
