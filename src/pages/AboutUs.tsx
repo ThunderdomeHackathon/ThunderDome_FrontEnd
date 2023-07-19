@@ -12,7 +12,7 @@ function AboutUs() {
 
         <div className='aboutBottom'>
             <h1> About Our Project</h1>
-            <p>Thunderdome is a groundbreaking blockchain-backed voting system project, aiming to revolutionize democracy with a secure, transparent, and tamper-resistant platform. Developed by a skilled team of blockchain experts, it ensures anonymity, real-time auditing, and global accessibility for voters. Thunderdome's decentralized design enhances resilience against cyberattacks, fostering trustworthy and accountable elections for a brighter democratic future.
+            <p>Thunderdome is a groundbreaking blockchain-backed voting system project, aiming to revolutionize democratic elections in African nations that have suffered from election fraud for many years with a secure, transparent, and tamper-resistant platform. Developed using the algorand network, it ensures voter security by providing a secure and global mechanism for election managment and result collection. Thunderdome's decentralized design enhances resilience against cyberattacks, fostering trustworthy and accountable elections for a brighter democratic future.
             </p>
         </div>
 

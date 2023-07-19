@@ -12,7 +12,8 @@ import React from "react";
 import VoterLogin from "@pages/VoterLogin";
 import VoterOverview from "@pages/VoterOverview";
 import VoterSignup from "@pages/VoterSignup";
-import Overview from "@pages/Overview";
+import OrgOverview from "@pages/OrgOverview";
+import VoteOverview from "@pages/VoteOverview";
 import AboutUs from "@pages/AboutUs";
 
 import UnprotectedRoute from "@components/UnprotectedRoute";
@@ -34,7 +35,8 @@ const App: React.FC = () => {
             <Route path="/about-us" element={<AboutUs />} />
           </Route>
           <Route element={<ProtectedRoute />}>
-            <Route path="/overview" element={<Overview />} />
+            <Route path="/org-overview" element={<OrgOverview />} />
+            <Route path="/vote-overview" element={<VoteOverview />} />
           </Route>
         </Routes>
         <Footer />

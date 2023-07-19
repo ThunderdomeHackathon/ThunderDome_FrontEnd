@@ -28,6 +28,7 @@ video {
     margin-top: 8px;
     color: #fff;
     font-size: 32px;
+    padding-bottom: 40px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
       'Lucida Sans', Arial, sans-serif;
   }
@@ -69,5 +70,25 @@ video {
     .btn {
       width: 100%;
     }
+  }
+
+  .aboutButton {
+    /* Button size and border */
+    padding: 10px 20px;
+    font-size: 30px;
+    border: 2px solid white;
+    border-radius: 8px;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .aboutButton:hover {
+    /* Hover animation styles */
+    background-color: white;
+    color: black;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   

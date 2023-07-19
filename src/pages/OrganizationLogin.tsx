@@ -10,11 +10,14 @@ import { useState } from "react";
 
 const OrganizationLogin = () => {
   const navigate = useNavigate();
+
+  // Defining state for loading, email, password and error messages
   const [loading, setLoading] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
+  // 
   const handleLogin = async () => {
     setLoading(true);
     setError(null);
@@ -23,7 +26,7 @@ const OrganizationLogin = () => {
     if (!isUndefined(userCredential) && !isNull(foundOrganization)) {
       setLoading(false);
       setError(null);
-      navigate("/overview");
+      navigate("/org-overview");
     }
     setLoading(false);
     setError("Could not sign in. Please try again.");

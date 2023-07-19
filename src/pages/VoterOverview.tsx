@@ -25,7 +25,7 @@ const VoterOverview = () => {
 
       <div 
     className='rightSide'
-    style={{ backgroundImage: `url(${"image6.jpg"})`}}>
+    style={{ backgroundImage: `url(${"image7.jpg"})`}}>
     </div>
 
       </div>
@@ -68,7 +68,7 @@ const VoterOverview = () => {
 
     <div 
     className='rightSide'
-    style={{ backgroundImage: `url(${"image8.jpg"})`}}>
+    style={{ backgroundImage: `url(${"image7.jpg"})`}}>
     </div>
 
     </div>

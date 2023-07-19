@@ -20,10 +20,11 @@ const VoterLogin = () => {
     setLoading(true);
     const userCredential = await signIn(email, password);
     const foundUser = await getVoter();
-    if (!isUndefined(userCredential) && !isNull(foundUser)) {
+
+    if (!isUndefined(userCredential)) {
       setLoading(false);
       setError(null);
-      navigate("/overview");
+      navigate("/vote-overview");
     }
     setLoading(false);
     setError("Could not sign in. Please try again.");
