@@ -48,9 +48,13 @@ function Navbar() {
         }
         if (user) {
           return (
-            <div className="signout-container">
-              <button onClick={logout}>Sign out</button>
-            </div>
+            <nav className='navbar'>
+              <div className='navbar-container'>
+                <div className="signout-container">
+                  <button onClick={logout}>Sign out</button>
+                </div>
+              </div>
+            </nav>
           );
         }
     

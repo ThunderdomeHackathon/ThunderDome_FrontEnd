@@ -1,6 +1,7 @@
 import Loading from "@components/Loading";
 import { createElection } from "../api/ElectionApi";
 import { useState } from "react";
+import {Link, Navigate, useNavigate} from "react-router-dom";
 import { OrgForms } from "@components/org/OrganizationView";
 
 interface Candidate {
@@ -14,6 +15,7 @@ type Props = {
 
 const CreateElection = ({ setForm }: Props) => {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const [electionName, setElectionName] = useState("");
   const [openingTime, setOpeningTime] = useState("");
   const [closingTime, setClosingTime] = useState("");
@@ -23,6 +25,9 @@ const CreateElection = ({ setForm }: Props) => {
   const [timezoneOffset, setTimezoneOffset] = useState("");
   const [voterEmails, setVoterEmails] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const handleButton = () => {
+    window.location.reload()
+  }
 
   const handleCreateElection = async () => {
     setError(null);
@@ -223,6 +228,12 @@ const CreateElection = ({ setForm }: Props) => {
               }}
             >
               Create Election
+            </button>
+
+            <button
+              onClick={handleButton}
+            >
+              Back
             </button>
           </form>
         </div>

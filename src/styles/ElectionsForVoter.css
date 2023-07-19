@@ -1,0 +1,93 @@
+/* Modern styles for the electionDetails component */
+.electionDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.electionDetails table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.electionDetails th,
+.electionDetails td {
+  padding: 10px;
+  text-align: center;
+}
+
+.electionDetails th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.electionDetails td button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.electionDetails td button:hover {
+  background-color: #0056b3;
+}
+
+/* Modern styles for the castVote component */
+.castVote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.castVote table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.castVote th,
+.castVote td {
+  padding: 10px;
+  text-align: center;
+}
+
+.castVote th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.castVote td button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.castVote td button:hover {
+  background-color: #0056b3;
+}
+
+.castVote td button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.castVote td button:disabled:hover {
+  background-color: #ccc;
+}
+
+/* Modern styles for the Loading component */
+/* Add your modern styles for the Loading component here */
+
+/* Modern styles for the ReactModal */
+/* Add your modern styles for the ReactModal here */
+
+/* Modern styles for error and other text elements */
+/* Add your modern styles for error and other text elements here */

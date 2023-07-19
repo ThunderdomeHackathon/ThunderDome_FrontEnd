@@ -24,6 +24,7 @@ function Home() {
           <Link to="/voter-login">
             <button>Vote</button>
           </Link>
+          
           <Link to="/organization-login">
             <button>Create an Election</button>
           </Link>
