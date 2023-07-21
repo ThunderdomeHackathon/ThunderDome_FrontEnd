@@ -6,6 +6,7 @@ import { Election } from "../../interfaces/Election";
 import Loading from "@components/Loading";
 import ReactModal from "react-modal";
 import { getElectionsForVoter } from "../../api/VoterApi";
+import { castVote } from "../../api/ElectionApi";
 import "../../styles/VoterOverview.css";
 
 export const ElectionsForVoter = () => {
@@ -43,8 +44,10 @@ export const ElectionsForVoter = () => {
     }
   };
 
-  const handleVoteForCandidateById = (candidateId: string) => {
+  const handleVoteForCandidateById = (candidateId: string, electionID: string) => {
     setVotedCandidateId(candidateId);
+    castVote(candidateId, electionID);
+
   };
 
   const ElectionForVoter = () => {
@@ -88,7 +91,7 @@ export const ElectionsForVoter = () => {
                   <td>{numberOfVotes}</td>
                   <td>
                     <button
-                      onClick={() => handleVoteForCandidateById(candidate.id)}
+                      onClick={() => handleVoteForCandidateById(candidate.id, clickedElection.id)}
                       disabled={alreadyVoted}
                     >
                       Vote

@@ -176,6 +176,7 @@ button:hover {
 .ReactModal__Content {
   /* Customize the size of the modal content */
   max-width: 600px; /* Adjust this value as needed */
+  max-height: 35%;
   margin: 20px;
   padding: 10px;
   background-color: #fff;
