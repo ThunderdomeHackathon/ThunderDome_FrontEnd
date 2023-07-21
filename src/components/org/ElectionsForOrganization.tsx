@@ -1,5 +1,6 @@
 import { isEmpty, isNull, isUndefined } from "lodash";
 import { useEffect, useState } from "react";
+import Navbar from "../../components/Navbar";
 
 import { Candidate } from "../../interfaces/Candidate";
 import { Election } from "../../interfaces/Election";
@@ -43,7 +44,7 @@ export const ElectionsForOrganization = () => {
 
   const ElectionForOrganization = () => {
     return (
-      <div>
+      <div className="electionsforOrgsPopup">
         <table>
           <thead>
             <tr>

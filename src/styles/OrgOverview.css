@@ -1,102 +1,101 @@
+/* Updated CSS */
 .OrgOverview {
-    width: 100%;
-    height: 90vh;
-    display: flex;
-  }
-  
-  .OrgOverview .leftSide {
-    height: 100%;
-    flex: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .OrgOverview .rightSide {
-    height: 100%;
-    flex: 50%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  
-  .OrgOverview .rightSide h1 {
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-      "Lucida Sans", Arial, sans-serif;
-    font-weight: 10;
-    font-size: 50px;
-    align-items: center;
-    margin-left: 30px;
-  }
+  width: 100%;
+  height: 90vh;
+  display: flex;
+}
 
-  .leftSide {
-    padding: 20px;
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .leftSide h1 {
-    font-size: 36px;
-    font-weight: bold;
-    align-items: center;
-    padding-left: 150px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .leftSide button.btn--large {
-    font-size: 18px;
-    font-weight: bold;
-    color: #000;
-    border: 2px solid #000;
-    background-color: transparent;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .leftSide button.btn--large:hover {
-    background-color: #000;
-    color: #fff;
-  }
-  
-  .leftSide button.btn--large:focus {
-    outline: none;
-  }
-  
-  /* Optional: Centering buttons */
-  .leftSide div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
+.OrgOverview .leftSide {
+  height: 100%;
+  flex: 1; /* Change flex property to 1 to allow dynamic expansion */
+  overflow-y: auto; /* Add a scroll effect for content overflow */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px; /* Add padding to control space between h1 and the table */
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-  /* Media query for smaller screens */
+.OrgOverview .rightSide {
+  height: 100%;
+  flex: 1; /* Change flex property to 1 to match left side's dynamic expansion */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.OrgOverview .rightSide h1 {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: 10;
+  font-size: 50px;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.leftSide h1 {
+  font-size: 36px;
+  font-weight: bold;
+  align-items: center;
+  color: #333;
+  margin-bottom: 10px; /* Reduce the space between h1 and the table */
+  padding-top: 100px;
+}
+
+.leftSide button.btn--large {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  border: 2px solid #000;
+  background-color: transparent;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.leftSide button.btn--large:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.leftSide button.btn--large:focus {
+  outline: none;
+}
+
+/* Optional: Centering buttons */
+.leftSide div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Media query for smaller screens */
 @media (max-width: 768px) {
-    .leftSide h1 {
-      font-size: 24px; /* Reduce font size for smaller screens */
-      padding-left: 20px; /* Adjust left padding for smaller screens */
-    }
+  .leftSide h1 {
+    font-size: 24px;
+    padding-left: 20px;
   }
-  
-  /* Media query for even smaller screens */
-  @media (max-width: 480px) {
-    .leftSide h1 {
-      font-size: 20px; /* Further reduce font size for even smaller screens */
-      padding-left: 10px; /* Adjust left padding for even smaller screens */
-    }
-  }
+}
 
-  /* Apply styles to the table container */
+/* Media query for even smaller screens */
+@media (max-width: 480px) {
+  .leftSide h1 {
+    font-size: 20px;
+    padding-left: 10px;
+  }
+}
+
+/* Apply styles to the table container */
 .electionsforOrgs {
   font-family: Arial, sans-serif;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 5px;
 }
 
 /* Apply styles to the table */
@@ -112,13 +111,15 @@ table {
 thead th {
   background-color: #007bff;
   color: #fff;
-  padding: 12px;
+  padding: 5px;
   text-align: left;
+  font-size: 10px;
 }
 
 /* Apply styles to the table body cells */
 tbody td {
-  padding: 12px;
+  padding: 5px;
+  font-size: 8px;
 }
 
 /* Apply alternating row background color */
@@ -130,13 +131,27 @@ tbody tr:nth-child(even) {
 button {
   background-color: #007bff;
   color: #fff;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 10px;
 }
 
 /* Hover effect for the button */
 button:hover {
   background-color: #0056b3;
 }
+
+/* Updated CSS for the ElectionForOrganization component */
+.electionsforOrgsPopup {
+  font-family: Arial, sans-serif;
+  max-width: 600px; /* Set a maximum width for the popup */
+  margin: 20px auto;
+  padding: 10px;
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+  margin-top: 80px; /* Adjust this value based on your navbar's height */
+}
+
