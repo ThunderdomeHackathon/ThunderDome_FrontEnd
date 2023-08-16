@@ -9,6 +9,8 @@ import { signIn } from "../api/FirebaseApi";
 import { useState } from "react";
 
 const VoterLogin = () => {
+
+  // Hello world
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
